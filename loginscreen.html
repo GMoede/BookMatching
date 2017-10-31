@@ -70,25 +70,26 @@ span.psw {
 
 <form action="/action_page.php">
   <div class="imgcontainer">
-    <img src="img_avatar2.png" alt="Avatar" class="avatar">
+    <img src="sampleImage.png" alt="Avatar" class="avatar">
   </div>
 
   <div class="container">
     <label><b>Username</b></label>
-    <input type="text" placeholder="Enter Username" name="uname" required>
+    <input type="text" placeholder="Enter Username" name="uname" id="username" required>
 
     <label><b>Password</b></label>
-    <input type="password" placeholder="Enter Password" name="psw" required>
+    <input type="password" placeholder="Enter Password" name="psw" id="password" required>
         
-    <button type="submit">Login</button>
-    <input type="checkbox" checked="checked"> Remember me
+    <input type="button" value="Login" id="submit" onclick="validate()"/>
+    <input type="button" value="Create Account" id="createAccount" onclick="createAccount()"/>
+    <!--input type="checkbox" checked="checked"-->
   </div>
 
   <div class="container" style="background-color:#f1f1f1">
-    <button type="button" class="cancelbtn">Cancel</button>
     <span class="psw">Forgot <a href="#">password?</a></span>
   </div>
 </form>
-
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script src="app.js"></script>
 </body>
 </html>
