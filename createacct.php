@@ -28,11 +28,7 @@ EOD;
 
 if (!isset($_POST['username']) || !isset($_POST['password']) || !isset($_POST['accounttype'])) {
   createacct_form('Welcome');
-} else {
-  echo <<<EOD
-  <script> hashPassword(); </script>
-EOD;
-  
+} else {  
   // Check validity of the supplied username & password
   $c = oci_pconnect(ORA_CON_UN, ORA_CON_PW, ORA_CON_DB);
   // Use a "bootstrap" identifier for this administration page
@@ -59,15 +55,14 @@ EOD;
     echo <<<EOD
     <body style="font-family: Arial, sans-serif;">
 
-    <h2>Login was successful</h2>
+    <h2>Account creation was successful.</h2>
     <p><a href="login.php">Try logging in with your new account</a><p>
     </body>
 EOD;
     exit;
   }
   else {
-    // No rows matched so login failed
-    createacct_form('Account creation failed. Try again."');
+    createacct_form('Account creation failed. Try again.');
   }
 }
 
