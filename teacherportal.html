@@ -27,8 +27,7 @@
 	</nav>
  	<ul class="nav nav-tabs">
     	<li class="active"><a href="#add" data-toggle="tab">Add Books</a></li>
-    	<li><a data-toggle="tab" href="#edit"> Edit Books </a></li>
-    	<li><a data-toggle="tab" href="#view"> View All Books </a></li>
+    	<li><a data-toggle="tab" href="#edit"> View/Edit Books </a></li>
   	</ul>
 	<div class="tab-content">
 		<div class="tab-pane fade in active" id="add"> 
@@ -39,34 +38,34 @@
 
 					<p id=book_label> Book details: </p>
 
-					<label for="title">Book Title:</label>
-					<input type="text" class="form-control" id="title">
+					<label for="input_title">Book Title:</label>
+					<input type="text" class="form-control" id="input_title" placeholder="The Cat and The Hat">
 
-					<label for="first_name">Author First Name:</label>
-					<input type="text" class="form-control" id="first_name">
+					<label for="input_firstname">Author First Name:</label>
+					<input type="text" class="form-control" id="input_firstname" placeholder="John">
 
-					<label for="last_name">Author Last Name:</label>
-					<input type="text" class="form-control" id="last_name">
+					<label for="input_lastname">Author Last Name:</label>
+					<input type="text" class="form-control" id="input_lastname" placeholder="Smith">
 
 
 					<div class="form-group row">
 					  	<div class="col-xs-4">
-					    	<label for="copyright">Copyright Year</label>
-					    	<input class="form-control" id="ex1" type="text">
+					    	<label for="input_copyright">Copyright Year</label>
+					    	<input class="form-control" id="input_copyright" type="text" placeholder="Ex: 2001">
 					  	</div>
 					  	<div class="col-xs-4">
-					  	  <label for="pages">Page Count</label>
-					  	  <input class="form-control" id="ex2" type="text">
+					  	  <label for="input_pages">Page Count</label>
+					  	  <input class="form-control" id="input_pages" name="input_pages" type="text" placeholder="Ex: 1738">
 					  	</div>
 					 	<div class="col-xs-4">
-					    	<label for="lexile">Lexile</label>
-					    	<input class="form-control" id="ex3" type="text">
+					    	<label for="input_lexile">Lexile</label>
+					    	<input class="form-control" id="input_lexile" name="input_lexile" type="text" placeholder="Ex: 200L">
 					  	</div>
 					</div>
 
 
-					<label for="sel1">Book Topic</label>
-		      		<select class="form-control" id="sel1">
+					<label for="input_topic">Book Topic</label>
+		      		<select class="form-control" id="input_topic">
 		        		<option>Adventure</option>
 		        		<option>Children's literature</option>
 		        		<option>Fantasy</option>
@@ -85,8 +84,8 @@
 		     		<p id=prot_label> Protagonist Characteristics: </p>
 
 
-		     		<label for="sel2">Primary Protagonist Nature</label>
-		      		<select class="form-control" id="sel1">
+		     		<label for="input_prot_feat">Primary Protagonist Nature</label>
+		      		<select class="form-control" id="input_prot_feat">
 		        		<option>African American</option>
 		        		<option>Afghanistani</option>
 		        		<option>Biracial</option>
@@ -97,8 +96,8 @@
 		        		<option>Young</option>
 		     		 </select>
 
-		     		 <label for="sel3">Protagonist Gender</label>
-		     		 <select class="form-control" id="sel3">
+		     		 <label for="input_prot_gender">Protagonist Gender</label>
+		     		 <select class="form-control" id="input_prot_gender">
 		     		 	<option>Male</option>
 		     		 	<option>Female</option>
 		     		 	<option>Other</option>
@@ -112,12 +111,8 @@
 	  	</div>
 
 		<div class="tab-pane fade" id="edit">  
-			<p> This is where books will be editted. </p>
+			<p> This is where books will be viewed/editted. </p>
 		</div>		
-
-		<div class="tab-pane fade" id="view">
-			<p> This is where books can be viewed. </p>
-		</div>
 
 	</div>
 </body>
