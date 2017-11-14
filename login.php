@@ -6,6 +6,19 @@ include("config.php");
 
 session_start();
 
+function hash_func($data)
+{
+  $hash = password_hash($data, PASSWORD_BCRYPT);
+  return $hash;
+}
+
+function sanitize_input($data) 
+{
+  $data = stripslashes($data);
+  $data = htmlspecialchars($data);
+  return $data;
+}
+
 function login_form($message)
 {
   echo <<<EOD
@@ -15,10 +28,10 @@ function login_form($message)
 
   <h2>Login Page</h2>
   <p>$message</p>
-  <form id="form" action="login.php" method="POST">
+  <form id="form" name="myform" action="login.php" method="POST" onsubmit="hashPassword();">
     <p>Username: <input type="text" name="username" id="username"></p>
 
-    <p>Password: <input type="text" name="password" id="password"</p>
+    <p>Password: <input type="password" name="password" id="password"</p>
     <input type="submit" value="Login">
   </form>
   </body>
@@ -32,13 +45,20 @@ if (!isset($_POST['username']) || !isset($_POST['password'])) {
   $c = oci_pconnect(ORA_CON_UN, ORA_CON_PW, ORA_CON_DB);
   // Use a "bootstrap" identifier for this administration page
   oci_set_client_identifier($c, 'admin');
+  $username = $_POST['username'];
+  $password = $_POST['password'];
+
+  $username = sanitize_input($username);
+  $password = sanitize_input($password);
+  //$password = hash_func($password);
+  
 
   $s = oci_parse($c, 'select username
                       from   ProjectUser 
                       where  username = :un_bv
                       and    password = :pw_bv');
-  oci_bind_by_name($s, ":un_bv", $_POST['username']);
-  oci_bind_by_name($s, ":pw_bv", $_POST['password']);
+  oci_bind_by_name($s, ":un_bv", $username);
+  oci_bind_by_name($s, ":pw_bv", $password);
   oci_execute($s);
   $r = oci_fetch_array($s, OCI_ASSOC);
 
@@ -53,7 +73,7 @@ if (!isset($_POST['username']) || !isset($_POST['password'])) {
     <body style="font-family: Arial, sans-serif;">
 
     <h2>Login was successful</h2>
-    <p><a href="application.php">Run the Application</a><p>
+    <p><a href="student.html">Run the Application</a><p>
     </body>
 EOD;
     exit;
@@ -61,7 +81,7 @@ EOD;
   else {
     // No rows matched so login failed
     login_form('Login failed. Valid usernames/passwords ' .
-               'are "chris/tiger" and "alison/red"');
+               'are "poop/pee" and "kebab/coconut"');
   }
 }
 
