@@ -1,0 +1,54 @@
+<html>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js" integrity=""></script>
+<script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-JAW99MJVpJBGcbzEuXk4Az05s/XyDdBomFqNlM3ic+I=" crossorigin="anonymous"></script>
+
+<form id="studentForm" method="POST">
+  Lexile: <input type="text" name="lexile" id="lexile">
+  <input type="submit" id="submitButton" name="submitButton" value="Submit Lexile">
+</form>
+
+<script type='text/javascript'>
+/*$.ajax({
+  type: 'POST',
+  url: 'application.php',
+  data: { lexile: $('#lexile').val() },
+  success: function(data){
+      alert(data);
+  }
+});
+*/
+  //attach a submit handler to the form
+  $("#studentForm").submit(function(event) {
+  
+  //stop form from submitting normally
+  event.preventDefault();
+
+  /*
+  //get the action attribute from the <form action=""> element
+  var $form = $( this ),
+    url = $form.attr( 'action' );
+  */
+  url = "application.php"
+
+
+  //send data using post with element id lexile
+   var posting = $.post( url, { lexile: $('#lexile').val() } );
+
+  //alerts the results
+  posting.done(function( data ) {
+    //alert(data);
+    if(data) {
+      $('#queryOutput').html(data);
+    }
+    else{
+      alert('failure');
+    }
+  });
+  });
+
+
+
+</script>
+<div id="queryOutput"></div>
+
+</html>
