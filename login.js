@@ -1,8 +1,7 @@
-document.onload = function(){
-  //document.getElementById("form").onsubmit = function()
-    var password = document.getElementById("password");
-    password.value = md5(password);
-};
+function hashPassword(){
+    document.myform.password.value = md5(password.value);
+    return true;
+}
   /*if (username == "Formget" && password == "formget123"){
     alert ("Login successfully");
     window.location = "success.html"; //Redirecting to other page
