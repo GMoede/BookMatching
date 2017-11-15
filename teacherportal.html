@@ -31,8 +31,8 @@
   	</ul>
 	<div class="tab-content">
 		<div class="tab-pane fade in active" id="add"> 
-			<div class="container">
-				<div class="form-group">
+			<div class="container" id="input_books">
+				<div class="form-group text-center">
 
 					<br>
 
@@ -41,11 +41,19 @@
 					<label for="input_title">Book Title:</label>
 					<input type="text" class="form-control" id="input_title" placeholder="The Cat and The Hat">
 
-					<label for="input_firstname">Author First Name:</label>
-					<input type="text" class="form-control" id="input_firstname" placeholder="John">
+					<br>
 
-					<label for="input_lastname">Author Last Name:</label>
-					<input type="text" class="form-control" id="input_lastname" placeholder="Smith">
+					<label for="author"> Preferred Author </label>
+			        <div class="form-group row" id="author">
+			        	<div class="col-xs-6">
+					        <label for="input_firstname"> First Name</label>
+							<input class="form-control" id="input_firstname" name="input_firstname" type="text" placeholder="John">
+						</div>
+						<div class="col-xs-6">
+							<label for="input_lastname">Last Name</label>
+							<input class="form-control" id="input_lastname" name="input_lastname" type="text" placeholder="Smith">
+						</div>
+					</div>
 
 
 					<div class="form-group row">
@@ -112,6 +120,118 @@
 
 		<div class="tab-pane fade" id="edit">  
 			<p> This is where books will be viewed/editted. </p>
+			<div class="container" id="edit_container">
+				<div class="col-md-2" id="buttonbar">
+					<!-- <script> editButtons(); </script> -->
+					<!-- template for edit button --> 
+					<br>
+					<div id="buttons_wrapper">
+						<button type="button" class="btn btn-default" id="delete" aria-label="Left Align">
+	  						<span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+						</button>
+						<button type="button" class="btn btn-default" id="edit" aria-label="Left Align" data-toggle="modal" data-target="#editModal">
+	  						<span class="glyphicon glyphicon-pencil" aria-hidden="true"> Edit</span>
+						</button>
+					</div>
+				</div>
+				<div class="col-md-8" id="render">
+
+				</div>
+			</div>
+
+			<div class="modal fade" id="editModal" role="dialog">
+		    <div class="modal-dialog">
+		    
+		      <!-- Modal content-->
+		      <div class="modal-content">
+		        <div class="modal-header">
+		          <button type="button" class="close" data-dismiss="modal">&times;</button>
+		          <h4 class="modal-title">Edit Book</h4>
+		        </div>
+		        <div class="modal-body">
+		          	<p id=book_label> Book details: </p>
+
+					<label for="input_title">Book Title:</label>
+					<input type="text" class="form-control" id="input_title" placeholder="The Cat and The Hat">
+
+					<br>
+
+					<label for="author"> Preferred Author </label>
+			        <div class="form-group row" id="author">
+			        	<div class="col-xs-6">
+					        <label for="input_firstname"> First Name</label>
+							<input class="form-control" id="input_firstname" name="input_firstname" type="text" placeholder="John">
+						</div>
+						<div class="col-xs-6">
+							<label for="input_lastname">Last Name</label>
+							<input class="form-control" id="input_lastname" name="input_lastname" type="text" placeholder="Smith">
+						</div>
+					</div>
+
+
+					<div class="form-group row">
+					  	<div class="col-xs-4">
+					    	<label for="input_copyright">Copyright Year</label>
+					    	<input class="form-control" id="input_copyright" type="text" placeholder="Ex: 2001">
+					  	</div>
+					  	<div class="col-xs-4">
+					  	  <label for="input_pages">Page Count</label>
+					  	  <input class="form-control" id="input_pages" name="input_pages" type="text" placeholder="Ex: 1738">
+					  	</div>
+					 	<div class="col-xs-4">
+					    	<label for="input_lexile">Lexile</label>
+					    	<input class="form-control" id="input_lexile" name="input_lexile" type="text" placeholder="Ex: 200L">
+					  	</div>
+					</div>
+
+
+					<label for="input_topic">Book Topic</label>
+		      		<select class="form-control" id="input_topic">
+		        		<option>Adventure</option>
+		        		<option>Children's literature</option>
+		        		<option>Fantasy</option>
+		        		<option>Fiction</option>
+		        		<option>Historical Fiction</option>
+						<option>Horror</option>
+						<option>Middle Grade</option>
+		        		<option>Novel</option>
+		        		<option>Realistic Fiction</option>
+		        		<option>Science Fiction</option>
+		        		<option>Young Adult</option>
+		     		</select>
+
+		     		<br>
+
+		     		<p id=prot_label> Protagonist Characteristics: </p>
+
+
+		     		<label for="input_prot_feat">Primary Protagonist Nature</label>
+		      		<select class="form-control" id="input_prot_feat">
+		        		<option>African American</option>
+		        		<option>Afghanistani</option>
+		        		<option>Biracial</option>
+		        		<option>Chilean</option>
+		        		<option>Hispanic</option>
+		        		<option>Pakistani</option>
+		        		<option>Scandinavian American</option>
+		        		<option>Young</option>
+		     		 </select>
+
+		     		 <label for="input_prot_gender">Protagonist Gender</label>
+		     		 <select class="form-control" id="input_prot_gender">
+		     		 	<option>Male</option>
+		     		 	<option>Female</option>
+		     		 	<option>Other</option>
+		     		 </select>
+		        </div>
+		        <div class="modal-footer">
+		          <button type="button" class="btn btn-default" data-dismiss="modal">Save</button>
+		        </div>
+		      </div>
+		      
+		    </div>
+		  </div>
+
 		</div>		
 
 	</div>
