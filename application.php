@@ -2,20 +2,16 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <?php
 
-echo <<<EOD
-    <body style="font-family: Arial, sans-serif;">
-    <p><a href="student.html">Home</a><p>
-    </body>
-EOD;
 
 
-$input_lexile = $_POST["lexile"];
-$input_lastname = 'Ellis';
-$input_firstname = 'Deborah';
-$input_pages = 150;
-$input_topic = 'Fantasy';
-$input_prot_feat = 'Hispanic';
-$input_prot_gender = 'Female';
+
+$input_lexile = $_POST["input_lexile"];
+$input_lastname = $_POST["input_lastname"];
+$input_firstname = $_POST["input_firstname"];
+$input_pages = $_POST["input_pages"];
+$input_topic = $_POST["input_topic"];
+$input_prot_feat = $_POST["input_prot_feat"];
+$input_prot_gender = $_POST["input_prot_gender"];
 
 include("config.php");
 $conn = oci_pconnect(ORA_CON_UN, ORA_CON_PW, ORA_CON_DB);
@@ -68,13 +64,15 @@ $num_columns = OCINumCols($sql_statement);
 echo "<BR/>";
 echo "</TR><TH>-- Obtaining results<TH>";
 // start results formatting
-echo "<TABLE BORDER=1>";
+echo "<TABLE BORDER=1 id='resultTable'>";
 echo
 "<TR><TH>Title</TH><TH>First Name</TH><TH>Last Name</TH><TH>Copyright</TH><TH>Lexile</TH><TH>Pages</TH><TH>Recommended?</TH><TH>Topic</TH><TH>Protagonist feature</TH><TH>Protagonist gender</TH>";
 
 // format results by row
+$z = 0;
 while (OCI_Fetch($sql_statement)){
-  echo "<TR>";
+  $z=OCIResult($sql_statement, 1);
+  echo "<TR id='$z'>";
   for ($i = 1; $i <= $num_columns; $i++) {
     $column_value = OCIResult($sql_statement,$i);
     echo "<TD>$column_value</TD>";
