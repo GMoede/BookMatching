@@ -27,6 +27,22 @@ function verifyInputs(){
 		if(errors.length > 0){
 			alert("The following fields are incomplete/incorrect: " + errors);
 		} else{
+		  url = "addbook.php"
+
+
+  //send data using post with element id lexile
+		  var posting = $.post( url, { input_lexile: $('#input_lexile').val(), input_firstname: $('#input_firstname').val(), input_lastname: $('#input_lastname').val(), input_pages: $('#input_pages').val(), input_topic: $('#input_topic').val(), input_prot_feat: $('#input_prot_feat').val(), input_prot_gender: $('#input_prot_gender').val(), input_title: $('#input_title').val(), input_copyright: $('#input_copyright').val() } );
+
+  //alerts the results
+		  posting.done(function( data ) {
+    //alert(data);
+		  if(data) {
+		    alert('success');
+		  }
+		  else{
+		    alert('failure');
+		  }
+		  });
 			//add book to database (AJAX call to php file)
 		}
 }
