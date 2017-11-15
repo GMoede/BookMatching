@@ -108,7 +108,7 @@ body {
 
 #search_results{
     height: 600px;
-    width: 600px;
+    width: 800px;
     overflow: scroll;
     border: 2px solid black;
 }
