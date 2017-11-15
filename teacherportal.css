@@ -1,11 +1,48 @@
-#input_form{
+#input_books{
+	background-color: lightgrey;
+	width: 60%;
+	left: 50%;
+
 
 }
 
 #prot_label{
-	    font: bold 19px/30px Georgia, serif;
+	text-align: left;
+	font: bold 17px/26px Georgia, serif;
 }
 
 #book_label{
-	 	font: bold 19px/30px Georgia, serif;
+	text-align: left;
+	font: bold 17px/26px Georgia, serif;
+}
+
+#edit_container{
+	background-color: lightgrey;
+	height: 600px;
+	overflow: scroll;
+
+}
+
+#buttonbar{
+	background-color: black;
+	height: 100%;
+}
+
+#render{
+	background-color: green;
+	height: 1000px;
+}
+
+#edit{
+	width: 60%;
+	left: 0px;
+}
+#delete{
+	width: 35%;
+	right: 0px;
+}
+
+#buttons_wrapper{
+	width:100%;
+	height: 30px;
 }
