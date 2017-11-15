@@ -30,3 +30,9 @@ function verifyInputs(){
 			//add book to database (AJAX call to php file)
 		}
 }
+
+function editButtons(){
+	for(var i = 0; i < 100; i++){
+		document.getElementById("buttonbar").innerHTML += "<button type=\"button\" class=\"btn btn-default\" id=\"edit\" aria-label=\"Left Align\" data-toggle=\"modal\" data-target=\"#editModal\"><span class=\"glyphicon glyphicon-pencil\" aria-hidden=\"true\"> Edit</span></button>";
+	}		
+}
