@@ -1,5 +1,5 @@
 body {
-    padding-top: 50px;
+    height: 800px;
 }
 .dropdown.dropdown-lg .dropdown-menu {
     margin-top: -1px;
@@ -89,7 +89,9 @@ body {
 }
 
 #sidebar{
-    height: 100vh;
+    height: 480px;
+    border: 2px solid black;
+    border-radius: 4px;
     background-color: lightgrey;
 }
 
@@ -99,7 +101,15 @@ body {
 }
 
 #book_entry{
+    width: 100%;
     border: 2px solid black;
     border-radius: 5px;
+}
+
+#search_results{
+    height: 600px;
+    width: 600px;
+    overflow: scroll;
+    border: 2px solid black;
 }
 
