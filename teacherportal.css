@@ -20,6 +20,7 @@
 	background-color: lightgrey;
 	height: 600px;
 	overflow: scroll;
+	width: 100vw;
 
 }
 
@@ -57,5 +58,5 @@
 }
 
 .list-group-item{
-	height: 65px;
+	height: 100px;
 }
