@@ -30,19 +30,32 @@
 
 #render{
 	background-color: green;
-	height: 1000px;
+	height: 70px;
+	padding-top: 5px;
+	width: 80%;
 }
 
 #edit{
-	width: 60%;
+	width: 55%;
 	left: 0px;
 }
 #delete{
-	width: 35%;
+	width: 15%;
 	right: 0px;
 }
 
-#buttons_wrapper{
-	width:100%;
-	height: 30px;
+.buttons_wrapper{
+	width: 100%;
+	height: 50px;
+}
+
+.book_row{
+	right: 0px;
+	width: 100%;
+	background-color: red;
+	height: 40px;
+}
+
+.list-group-item{
+	height: 65px;
 }
