@@ -1,4 +1,10 @@
 <!DOCTYPE html>
+<?php
+if ($_SESSION['username'] == NULL){
+	header("Location: login.php");
+	exit();
+}
+?>
 <html lang="en">
 <head>
   <title>Student Portal</title>
