@@ -62,6 +62,7 @@ if (!isset($_POST['username']) || !isset($_POST['password'])) {
   oci_execute($s);
   $r = oci_fetch_array($s, OCI_ASSOC);
 
+
   if ($r) {
     // The password matches: the user can use the application
 
@@ -69,13 +70,33 @@ if (!isset($_POST['username']) || !isset($_POST['password'])) {
     // future HTTP requests:
     $_SESSION['username'] = $_POST['username'];
 
-    echo <<<EOD
-    <body style="font-family: Arial, sans-serif;">
+    $sql = "SELECT usertype
+            FROM ProjectUser
+            WHERE username = :un_bv";
+    $sql_statement = oci_parse($c, $sql);
+    oci_bind_by_name($sql_statement, ":un_bv", $username);
+    oci_execute($sql_statement);
 
-    <h2>Login was successful</h2>
-    <p><a href="student.html">Run the Application</a><p>
-    </body>
+    while(oci_fetch($sql_statement)){
+      if((oci_result($sql_statement, 1)) == "Student"){
+            echo <<<EOD
+            <body style="font-family: Arial, sans-serif;">
+            <h2>Login was successful. Welcome Student!</h2>
+            <p><a href="studentportal.php">Run the Application</a><p>
+            </body>
+          
 EOD;
+      }
+      else{
+            echo <<<EOD
+            <body style="font-family: Arial, sans-serif;">
+
+            <h2>Login was successful. Welcome Teacher!</h2>
+            <p><a href="teacherportal.php">Run the Application</a><p>
+            </body>
+EOD;
+      }
+    }
     exit;
   }
   else {
