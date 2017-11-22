@@ -7,7 +7,7 @@ oci_set_client_identifier($conn, 'admin');
 //THIS SQL STATEMENT IS WHERE WE NEED TO SORT
 $sql = "SELECT title, firstname, lastname, copyright, lexile, pages, recommended, topic, prot_feat, prot_gender
 	FROM Book
-	ORDER BY title desc";
+	ORDER BY title";
 // parse SQL statement
 $sql_statement = oci_parse($conn,$sql);
 // execute SQL query
