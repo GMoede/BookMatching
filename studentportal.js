@@ -53,4 +53,19 @@ function classSearch(){
 	document.getElementById("search_results").innerHTML += "<div class=\"col-md-7\" id=\"book_entry\" style=\"border-color: black;\"><div class=\"col-md-3\"><p class=\"search_text\"> Insert photo here </p></div><div class=\"col-md-3\"><p class=\"search_text\"> Book Title </p><p class=\"search_text\"> Author </p><p class=\"search_text\"> Copyright </p></div><div class=\"col-md-3 text-right\"><p class=\"search_text\"> protag1 </p><p class=\"search_text\"> protag2 </p><p class=\"search_text\"> protag3 </p></div></div> <br>";
 }
 
+// This is the function to update the recommended field when the recommend button is pressed 
+function recommendBook(title){
+	url = "recommendbook.php"
+    var posting = $.post( url, {input_title: title } );
+    posting.done(function( data ) {
+		  if(data){
+		    alert('success');
+		    console.log(data);
+		    location.reload();
+		  }
+		  else{
+		    alert('failure');
+		  }
+	});
+}
 
