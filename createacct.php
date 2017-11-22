@@ -48,31 +48,42 @@ EOD;
 if (!isset($_POST['username']) || !isset($_POST['password']) || !isset($_POST['accounttype'])) {
   createacct_form('Welcome');
 } else {  
-  // Check validity of the supplied username & password
+  
+  // Connect to oracle database
   $c = oci_pconnect(ORA_CON_UN, ORA_CON_PW, ORA_CON_DB);
+  
   // Use a "bootstrap" identifier for this administration page
   oci_set_client_identifier($c, 'admin');
   $username = $_POST['username'];
   $password = $_POST['password'];
   $accounttype = $_POST['accounttype'];
 
+  //Sanitize inputs
   $username = sanitize_input($username);
   $password = sanitize_input($password);
   $accounttype = sanitize_input($accounttype);
-  //$password = hash_func($password);
 
-  $s = oci_parse($c, 'INSERT INTO ProjectUser
+  //Check if the username is already in the database. If it is, recreate login form with 'username taken' message
+  $checkUsername = oci_parse($c, 'SELECT username FROM ProjectUser WHERE username = :un_bv');
+  oci_bind_by_name($checkUsername, ":un_bv", $username);
+  oci_execute($checkUsername, OCI_DEFAULT);
+  echo (oci_result($checkUsername, 1));
+  oci_fetch($checkUsername);
+  if (oci_result($checkUsername, 1) == $username){
+    createacct_form('That username is already taken. Please enter a different username.');
+  } else {
+
+    $s = oci_parse($c, 'INSERT INTO ProjectUser
 		      (username, password, usertype)
 		      VALUES
 		      (:un_bv, :pw_bv, :at_bv)');
-  oci_bind_by_name($s, ":un_bv", $username);
-  oci_bind_by_name($s, ":pw_bv", $password);
-  oci_bind_by_name($s, ":at_bv", $accounttype);
-  oci_execute($s, OCI_DEFAULT);
-  oci_commit($c);
-/*  $r = oci_fetch_array($s, OCI_ASSOC);
+    oci_bind_by_name($s, ":un_bv", $username);
+    oci_bind_by_name($s, ":pw_bv", $password);
+    oci_bind_by_name($s, ":at_bv", $accounttype);
 
- */ if (1) {
+    oci_execute($s, OCI_DEFAULT);
+    oci_commit($c);
+    if (1) {
     // The password matches: the user can use the application
 
     // Set the user name to be used as the client identifier in
@@ -90,6 +101,7 @@ EOD;
   }
   else {
     createacct_form('Account creation failed. Try again.');
+  }
   }
 }
 
