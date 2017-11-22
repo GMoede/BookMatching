@@ -148,3 +148,21 @@ function updateBook(){
     });
   
 }
+
+function updateOrder(){
+	url = "updateorder.php"
+
+	var input_order = document.getElementById("input_order").value;
+  //send data using post with element id lexile
+	var posting = $.post(url , {orderby: input_order});
+	posting.done(function(data){
+		if(data) {
+			 $('#edit_container').html(data);
+		}
+		else{
+			alert('failure');
+		}
+	});
+
+
+}
