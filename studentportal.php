@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <?php
+session_start();
 if ($_SESSION['username'] == NULL){
 	header("Location: login.php");
 	exit();
