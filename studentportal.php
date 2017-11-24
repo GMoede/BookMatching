@@ -20,10 +20,8 @@ if ($_SESSION['username'] == NULL){
  <link rel="stylesheet" type="text/css" href="studentportal.css">
 </head>
 <body>
-	<div class="page-header">
-    	<h1>  Student Portal</h1>
-    </div>
-
+	<br>
+	<br>
     <nav class="navbar navbar-inverse">
 	  <div class="container-fluid">
 	    <div class="navbar-header">
@@ -34,26 +32,27 @@ if ($_SESSION['username'] == NULL){
 	    </ul>
 	  </div>
 	</nav>
-	<div class="container">
+
+	<div class="container" id="search_container">
 		<div class="modal-body row">
 	  		<div class="col-md-5 text-center" id="sidebar">
 	   		<!-- Your first column here -->
 		   		<form class="form-horizontal" role="form" id="studentForm" name="studentForm" method="POST">
 			        <br>
-			        <label for="author"> Preferred Author </label>
+			        <label for="author" style="color: #fffff0;"> Preferred Author </label>
 			        <div class="form-group row" id="author">
 			        	<div class="col-xs-6">
-					        <label for="input_firstname"> First Name</label>
+					        <label for="input_firstname" style="color: #fffff0;"> First Name</label>
 							<input class="form-control" id="input_firstname" name="input_firstname" type="text" placeholder="John">
 						</div>
 						<div class="col-xs-6">
-							<label for="input_lastname">Last Name</label>
+							<label for="input_lastname" style="color: #fffff0;">Last Name</label>
 							<input class="form-control" id="input_lastname" name="input_lastname" type="text" placeholder="Smith">
 						</div>
 					</div>
 
 		            <div class="form-group">
-		                <label for="input_topic">Book Topic</label>
+		                <label for="input_topic" style="color: #fffff0;">Book Topic</label>
 		                <select class="form-control" id="input_topic" name="input_topic">
 		                    <option value="Adventure">Adventure</option>
 							<option value="Children's literature">Children's literature</option>
@@ -70,7 +69,7 @@ if ($_SESSION['username'] == NULL){
 		              </div>
 
 		              <div class="form-group">
-		                <label for="input_prot_feat">Primary Protagonist Nature</label>
+		                <label for="input_prot_feat" style="color: #fffff0;">Primary Protagonist Nature</label>
 		                <select class="form-control" id="input_prot_feat" name="input_prot_feat">
 		                    <option value="African American">African American</option>
 							<option value="Afghanistani">Afghanistani</option>
@@ -84,7 +83,7 @@ if ($_SESSION['username'] == NULL){
 		              </div>
 
 		              <div class="form-group">
-		                <label for="input_prot_gender">Protagonist Gender</label>
+		                <label for="input_prot_gender" style="color: #fffff0;">Protagonist Gender</label>
 		                <select class="form-control" id="input_prot_gender" name="input_prot_gender">
 		                	<option value="Male">Male</option>
 							<option value="Female">Female</option>
@@ -94,11 +93,11 @@ if ($_SESSION['username'] == NULL){
 		     			
 		     			<div class="form-group row">
 						  	<div class="col-xs-6">
-						  	  <label for="input_pages">Page Count</label>
+						  	  <label for="input_pages" style="color: #fffff0;">Page Count</label>
 						  	  <input class="form-control" id="input_pages" name="input_pages" type="text" placeholder="Ex: 1738">
 						  	</div>
 						 	<div class="col-xs-6">
-						    	<label for="input_lexile">Lexile</label>
+						    	<label for="input_lexile" style="color: #fffff0;">Lexile</label>
 						    	<input class="form-control" id="input_lexile" name="input_lexile" type="text" placeholder="Ex: 200L">
 						  	</div>
 						</div>
@@ -107,7 +106,7 @@ if ($_SESSION['username'] == NULL){
 		            </form>
 
 		  	</div>
-		  	<div id="search">
+		  	<div class="container" id="search">
 		  		<div class="col-md-7">
 		    		<!-- Search bar -->
 		    		<!--<form class="navbar-form" role="search" id="searchbar">
@@ -120,31 +119,58 @@ if ($_SESSION['username'] == NULL){
 		  			</form>-->
 
 		  			<!-- Template container to render textbook information--> 
-		  			<div id="search_results" name="search_results"></div>
-		  				<!--
-		    			<p id="test"></p>
-		    			<div class="col-md-7" id="book_entry" style="border-color: black;">
-		    				<div class="col-md-3">
-		    					<p class="search_text"> Insert photo here </p>
-		    				</div>
-		    				<div class="col-md-3">
-		    					<p class="search_text"> Book Title </p>
-		    					<p class="search_text"> Author </p>
-		    					<p class="search_text"> Copyright </p>
-		    				</div>
-		    				<div class="col-md-3 text-right">
-		    					<p class="search_text"> protag1 </p>
-		    					<p class="search_text"> protag2 </p>
-		    					<p class="search_text"> protag3 </p>
-		    				</div>
-		    			</div>
-		    			-->
-		    		</div>
-					
-
-		  		</div>
-		  	</div>
+		  				<div id="search_results" name="search_results">
+							<div class="row search_result">
+						        <div class="title col-md-6">
+						        	<p class="book_title_field"> Book Title (Copyright Year) </p>
+						        	<p class="book_author_field"> by Author Name </p>
+						        	<span style="font: bold 12px/14px Georgia, serif; color: #fffff0;"> Page Count: </span> <span class="book_detail_field right"> 420</span>
+						        	<span style="font: bold 12px/14px Georgia, serif; color: #fffff0;"> Lexile: </span> <span class="book_detail_field left"> 100L </span>
+						        </div>
+						        <div class="details col-md-5"> 
+						        	<p class="book_detail_header"> Topic:
+						        		<span class="book_detail_field"> topic </span>
+						        	</p>
+						        	<p class="book_detail_field">  </p>
+						        	<p class="book_detail_header"> Protagonist: 
+						        		<span class="book_detail_field"> Prot_feat </span>
+						        		<span class="book_detail_field"> Prot_gender </span>
+						        	</p>
+						        	<span style="font: bold 12px/14px Georgia, serif; color: #fffff0;"> Recommended: </span> <span class="book_detail_field left"> N
+						        		<button type='button' style="right=0px;" class='btn btn-default recommend_button' id='$z' data-toggle='modal' data-target='#editModal' onclick='recommendBook(this.id)'>
+	  										<span class='glyphicon glyphicon-thumbs-up' aria-hidden='true'></span>
+										</button>
+						        	</span> 
+						        </div>
+						    </div>
+						    <div class="row search_result">
+						        <div class="title col-md-6">
+						        	<p class="book_title_field"> Book Title (Copyright Year) </p>
+						        	<p class="book_author_field"> by Author Name </p>
+						        	<span style="font: bold 12px/14px Georgia, serif; color: #fffff0;"> Page Count: </span> <span class="book_detail_field right"> 420</span>
+						        	<span style="font: bold 12px/14px Georgia, serif; color: #fffff0;"> Lexile: </span> <span class="book_detail_field left"> 100L </span>
+						        </div>
+						        <div class="details col-md-5"> 
+						        	<p class="book_detail_header"> Topic:
+						        		<span class="book_detail_field"> topic </span>
+						        	</p>
+						        	<p class="book_detail_field">  </p>
+						        	<p class="book_detail_header"> Protagonist: 
+						        		<span class="book_detail_field"> Prot_feat </span>
+						        		<span class="book_detail_field"> Prot_gender </span>
+						        	</p>
+						        	<span style="font: bold 12px/14px Georgia, serif; color: #fffff0;"> Recommended: </span> <span class="book_detail_field left"> N
+						        		<button type='button' style="right=0px;" class='btn btn-default recommend_button' id='$z' data-toggle='modal' data-target='#editModal' onclick='recommendBook(this.id)'>
+	  										<span class='glyphicon glyphicon-thumbs-up' aria-hidden='true'></span>
+										</button>
+						        	</span> 
+						        </div>
+						    </div>
+						</div>
+				    </div>
+		    	</div>
+	  		</div>
 	  	</div>
-	</div>
+  	</div>
 </body>
 </html>
