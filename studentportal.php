@@ -120,6 +120,7 @@ if ($_SESSION['username'] == NULL){
 
 		  			<!-- Template container to render textbook information--> 
 		  				<div id="search_results" name="search_results">
+		  					<!--
 							<div class="row search_result">
 						        <div class="title col-md-6">
 						        	<p class="book_title_field"> Book Title (Copyright Year) </p>
@@ -166,6 +167,7 @@ if ($_SESSION['username'] == NULL){
 						        	</span> 
 						        </div>
 						    </div>
+						-->
 						</div>
 				    </div>
 		    	</div>
