@@ -1,27 +1,56 @@
+#add{
+	background-image: url("background.jpeg");
+}
+
 #input_books{
-	background-color: lightgrey;
+	background-color:rgba(0, 0, 0, 0.5);
 	width: 60%;
 	left: 50%;
-
-
+	border-radius: 8px;
 }
 
 #prot_label{
+	color: #fffff0;
 	text-align: left;
-	font: bold 17px/26px Georgia, serif;
+	font: bold 17px/26px Bookman Header, serif;
 }
 
 #book_label{
+	color: #fffff0;
 	text-align: left;
-	font: bold 17px/26px Georgia, serif;
+	font: bold 17px/26px Bookman Header, serif;
+}
+
+.book_author_field{
+	color: #fffff0;
+	text-align: left;
+	font: italic 12px/14px Bookman Header, serif;
+}
+
+.book_title_field{
+	color: #fffff0;
+	text-align: left;
+	font: bold 17px/26px Bookman Header, serif;
+}
+
+.book_detail_field{
+	color: #fffff0;
+	text-align: left;
+	font: 12px/14px Bookman Header, serif;
+}
+
+.book_detail_header{
+	color: #fffff0;
+	text-align: left;
+	font: bold 14px/18px Bookman Header, serif;
 }
 
 #edit_container{
-	background-color: lightgrey;
+	/*background-color: grey;*/
+	background-image: url("background.jpeg");
 	height: 600px;
 	overflow: scroll;
 	width: 100vw;
-
 }
 
 #buttonbar{
@@ -58,5 +87,50 @@
 }
 
 .list-group-item{
-	height: 100px;
+	height: 65px;
+}
+
+.search_result{
+	width: 100%;
+    border: 2px solid black;
+    border-radius: 15px;
+    padding: 10px;
+    padding-bottom: 10px;
+    padding-top: 10px;
+    background-color:rgba(0, 0, 0, 0.5);
+}
+ .delete{
+ 	height: 80%;
+ }
+
+ .left{
+ 	text-align: left;
+ }
+
+ .right{
+ 	text-align: right;
+ }
+
+ .edit {
+    height: 70px;
+    width: 135px;
+
+}
+
+
+.edit_button:hover {
+    background-color: lightgrey; /* Green */
+    color: #fffff0;
+}
+
+
+
+.delete_button:hover {
+    background-color: lightgrey; /* Green */
+    color: #fffff0;
+}
+
+.delete {
+    height: 70px;
+    width: 135px;
 }
