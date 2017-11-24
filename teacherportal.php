@@ -19,9 +19,8 @@ if ($_SESSION['username'] == NULL){
 
 </head>
 <body>
-	<div class="page-header">
-    	<h1>  Teacher Portal</h1>      
- 	</div>
+	<br>
+	<br>
  	<nav class="navbar navbar-inverse">
 	  <div class="container-fluid">
 	    <div class="navbar-header">
@@ -46,19 +45,19 @@ if ($_SESSION['username'] == NULL){
 
 					<p id=book_label> Book details: </p>
 
-					<label for="input_title">Book Title:</label>
+					<label style="color: #fffff0;" for="input_title">Book Title:</label>
 					<input type="text" class="form-control" id="input_title" placeholder="The Cat and The Hat">
 
 					<br>
 
-					<label for="author"> Preferred Author </label>
+					<label style="color: #fffff0;" for="author"> Preferred Author </label>
 			        <div class="form-group row" id="author">
 			        	<div class="col-xs-6">
-					        <label for="input_firstname"> First Name</label>
+					        <label style="color: #fffff0;" for="input_firstname"> First Name</label>
 							<input class="form-control" id="input_firstname" name="input_firstname" type="text" placeholder="John">
 						</div>
 						<div class="col-xs-6">
-							<label for="input_lastname">Last Name</label>
+							<label style="color: #fffff0;" for="input_lastname">Last Name</label>
 							<input class="form-control" id="input_lastname" name="input_lastname" type="text" placeholder="Smith">
 						</div>
 					</div>
@@ -66,21 +65,21 @@ if ($_SESSION['username'] == NULL){
 
 					<div class="form-group row">
 					  	<div class="col-xs-4">
-					    	<label for="input_copyright">Copyright Year</label>
-					    	<input class="form-control" id="input_copyright" type="text" placeholder="Ex: 2001">
+					    	<label style="color: #fffff0;" for="input_copyright">Copyright Year</label>
+					    	<input class="form-control text-white" id="input_copyright" type="text" placeholder="Ex: 2001">
 					  	</div>
 					  	<div class="col-xs-4">
-					  	  <label for="input_pages">Page Count</label>
+					  	  <label style="color: #fffff0;" for="input_pages">Page Count</label>
 					  	  <input class="form-control" id="input_pages" name="input_pages" type="text" placeholder="Ex: 1738">
 					  	</div>
 					 	<div class="col-xs-4">
-					    	<label for="input_lexile">Lexile</label>
+					    	<label style="color: #fffff0;" for="input_lexile">Lexile</label>
 					    	<input class="form-control" id="input_lexile" name="input_lexile" type="text" placeholder="Ex: 200L">
 					  	</div>
 					</div>
 
 
-					<label for="input_topic">Book Topic</label>
+					<label style="color: #fffff0;" for="input_topic">Book Topic</label>
 		      		<select class="form-control" id="input_topic">
 		        		<option>Adventure</option>
 		        		<option>Children's literature</option>
@@ -100,7 +99,7 @@ if ($_SESSION['username'] == NULL){
 		     		<p id=prot_label> Protagonist Characteristics: </p>
 
 
-		     		<label for="input_prot_feat">Primary Protagonist Nature</label>
+		     		<label style="color: #fffff0;" for="input_prot_feat">Primary Protagonist Nature</label>
 		      		<select class="form-control" id="input_prot_feat">
 		        		<option>African American</option>
 		        		<option>Afghanistani</option>
@@ -112,7 +111,7 @@ if ($_SESSION['username'] == NULL){
 		        		<option>Young</option>
 		     		 </select>
 
-		     		 <label for="input_prot_gender">Protagonist Gender</label>
+		     		 <label style="color: #fffff0;" for="input_prot_gender">Protagonist Gender</label>
 		     		 <select class="form-control" id="input_prot_gender">
 		     		 	<option>Male</option>
 		     		 	<option>Female</option>
@@ -126,9 +125,84 @@ if ($_SESSION['username'] == NULL){
 		  	</div>
 	  	</div>
 
-		<div class="tab-pane fade in active" id="edit">  
+		<div class="tab-pane fade in active text" id="edit">  
+			<div class="container text-center" id="order_container">
+				<form class="form-inline">
+					<label for="sel1">Order By:</label>
+	  				<select class="form-control" id="input_order">
+					    <option value="title">Title</option>
+					    <option value="firstname">Author First Name</option>
+					    <option value="lastname">Author Last Name</option>
+					    <option value="copyright">Copyright Year</option>
+					    <option value="lexile">Lexile</option>
+					 </select>
+					 <button type="button" class="btn btn-primary" onclick="updateOrder()">Update</button>
+				</form>
+			</div>
+
+			<br> 
+
 			<div class="container" id="edit_container">
-				
+				<div class="container">
+					<!--
+				     <div class="row search_result">
+				        <div class="title col-md-5">
+				        	<p class="book_title_field"> Book Title (Copyright Year) </p>
+				        	<p class="book_author_field"> by Author Name </p>
+				        	<span style="font: bold 12px/14px Georgia, serif; color: #fffff0;"> Page Count: </span> <span class="book_detail_field right"> 420</span>
+				        	<span style="font: bold 12px/14px Georgia, serif; color: #fffff0;"> Lexile: </span> <span class="book_detail_field left"> 100L </span>
+				        </div>
+				        <div class="details col-md-4"> 
+				        	<p class="book_detail_header"> Topic:
+				        		<span class="book_detail_field"> topic </span>
+				        	</p>
+				        	<p class="book_detail_field">  </p>
+				        	<p class="book_detail_header"> Protagonist: 
+				        		<span class="book_detail_field"> Prot_feat </span>
+				        		<span class="book_detail_field"> Prot_gender </span>
+				        	</p>
+				        </div>
+				        <div class="edit col-md-1">
+				        	<button type='button' class='btn btn-default edit edit_button' id='$z' data-toggle='modal' data-target='#editModal' onclick='editBook(this.id)'>
+	  							<span class='glyphicon glyphicon-pencil' aria-hidden='true'> Edit </span>
+							</button>
+				        </div>
+				        <div class="delete col-md-1">
+				        	<button type='button' class='btn btn-default delete delete_button' id='$z' onclick='deleteBook(this.id)'>
+	  							<span class='glyphicon glyphicon-trash' aria-hidden='true'> Delete </span>
+							</button>
+				        </div>
+				    </div>
+				    <div class="row search_result">
+				        <div class="title col-md-5">
+				        	<p class="book_title_field"> Book Title (Copyright Year) </p>
+				        	<p class="book_author_field"> by Author Name </p>
+				        	<span style="font: bold 12px/14px Georgia, serif; color: white;"> Page Count: </span> <span class="book_detail_field right"> 420</span>
+				        	<span style="font: bold 12px/14px Georgia, serif; color: white;"> Lexile: </span> <span class="book_detail_field left"> 100L </span>
+				        </div>
+				        <div class="details col-md-4"> 
+				        	<p class="book_detail_header"> Topic:
+				        		<span class="book_detail_field"> topic </span>
+				        	</p>
+				        	<p class="book_detail_field">  </p>
+				        	<p class="book_detail_header"> Protagonist: 
+				        		<span class="book_detail_field"> Prot_feat </span>
+				        		<span class="book_detail_field"> Prot_gender </span>
+				        	</p>
+				        </div>
+				        <div class="edit col-md-1">
+				        	<button type='button' class='btn btn-default edit edit_button' id='$z' data-toggle='modal' data-target='#editModal' onclick='editBook(this.id)'>
+	  							<span class='glyphicon glyphicon-pencil' aria-hidden='true'> Edit </span>
+							</button>
+				        </div>
+				        <div class="delete col-md-1">
+				        	<button type='button' class='btn btn-default delete delete_button' id='$z' onclick='deleteBook(this.id)'>
+	  							<span class='glyphicon glyphicon-trash' aria-hidden='true'> Delete </span>
+							</button>
+				        </div>
+				    </div>
+					-->
+				</div>
 			</div>
 
 			<div class="modal fade" id="editModal" role="dialog">
@@ -230,3 +304,4 @@ if ($_SESSION['username'] == NULL){
 	</div>
 </body>
 </html>
+
