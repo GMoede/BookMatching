@@ -1,0 +1,12 @@
+#background{
+	background-image: url("background.jpeg");
+	height: 100vh;
+}
+
+#login_bar{
+	top: 10vh;
+    margin: auto;
+    border: 2px solid black;
+    border-radius: 20px;
+    background-color:rgba(0, 0, 0, 0.8);
+}
