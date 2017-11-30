@@ -56,7 +56,6 @@ function createacct_form($message)
 	  <br>
 	    <label style="color: #fffff0;" for="accounttype">Account Type: </label>
 	    <select class="form-control" id="accounttype" name="accounttype">
-		  <option>Teacher</option>
 		  <option>Student</option>
 	      </select>
 	  <br>

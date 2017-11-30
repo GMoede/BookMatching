@@ -5,6 +5,11 @@ if ($_SESSION['username'] == NULL){
 	header("Location: login.php");
 	exit();
 }
+if ($_SESSION['type'] == 'Student'){
+	echo "<script>alert('You do not have permission to access this page');</script>";
+	header("Location: login.php");
+	exit();
+}
 ?>
 <html lang="en">
 <head>
@@ -14,7 +19,7 @@ if ($_SESSION['username'] == NULL){
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-  <script src="teacherportal.js?version=1" type="text/javascript"></script>
+  <script src="teacherportal.js?version=2" type="text/javascript"></script>
   <link rel="stylesheet" type="text/css" href="teacherportal.css?v=1">
 
 </head>
@@ -24,7 +29,7 @@ if ($_SESSION['username'] == NULL){
  	<nav class="navbar navbar-inverse">
 	  <div class="container-fluid">
 	    <div class="navbar-header">
-	      <a class="navbar-brand" href="#">Teacher Portal</a>
+	      <a class="navbar-brand" id="websitelabel">Teacher Portal</a>
 	    </div>
 	    <ul class="nav navbar-nav navbar-right">
 	      <li><a href="login.php" onclick="logout()"><span class="glyphicon glyphicon-log-in"></span> Log out</a></li>
@@ -38,6 +43,9 @@ if ($_SESSION['username'] == NULL){
   	</ul>
 	<div class="tab-content">
 		<div class="tab-pane fade" id="add"> 
+			<br>
+			<br>
+			<br>
 			<div class="container" id="input_books">
 				<div class="form-group text-center">
 
@@ -81,6 +89,7 @@ if ($_SESSION['username'] == NULL){
 
 					<label style="color: #fffff0;" for="input_topic">Book Topic</label>
 		      		<select class="form-control" id="input_topic">
+					<option value="unselected">Choose Book Topic</option>
 		        		<option>Adventure</option>
 		        		<option>Children's literature</option>
 		        		<option>Fantasy</option>
@@ -101,6 +110,7 @@ if ($_SESSION['username'] == NULL){
 
 		     		<label style="color: #fffff0;" for="input_prot_feat">Primary Protagonist Nature</label>
 		      		<select class="form-control" id="input_prot_feat">
+					<option value="unselected">Choose Protagonist Nature</option>
 		        		<option>African American</option>
 		        		<option>Afghanistani</option>
 		        		<option>Biracial</option>
@@ -113,6 +123,7 @@ if ($_SESSION['username'] == NULL){
 
 		     		 <label style="color: #fffff0;" for="input_prot_gender">Protagonist Gender</label>
 		     		 <select class="form-control" id="input_prot_gender">
+					<option value="unselected">Choose Protagonist Gender</option>
 		     		 	<option>Male</option>
 		     		 	<option>Female</option>
 		     		 	<option>Other</option>

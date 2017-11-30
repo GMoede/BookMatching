@@ -116,6 +116,7 @@ if (!isset($_POST['username']) || !isset($_POST['password'])) {
 
     while(oci_fetch($sql_statement)){
       if((oci_result($sql_statement, 1)) == "Student"){
+	    $_SESSION['type'] = "Student";
 	    header('Location: studentportal.php');
 	    exit;
             echo <<<EOD
@@ -127,6 +128,7 @@ if (!isset($_POST['username']) || !isset($_POST['password'])) {
 EOD;
       }
       else{
+	    $_SESSION['type'] = "Teacher";
 	    header('Location: teacherportal.php');
 	    exit;
             echo <<<EOD

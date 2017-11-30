@@ -32,6 +32,15 @@ function verifyInputs(){
 		if(document.getElementById("input_pages").value === "" || isNaN(document.getElementById("input_pages").value)){
 			errors.push("Page Count");
 		}
+		if(document.getElementById("input_topic").value === "unselected"){
+			errors.push("Book Topic");
+		}
+		if(document.getElementById("input_prot_feat").value === "unselected"){
+			errors.push("Protagonist Nature");
+		}
+		if(document.getElementById("input_prot_gender").value === "unselected"){
+			errors.push("Protagonist Gender");
+		}
 		//checking lexile validity
 		var lexile = document.getElementById("input_lexile").value;
 		lexile = lexile.replace(/L/g, ''); 
