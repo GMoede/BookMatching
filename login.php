@@ -25,7 +25,7 @@ function login_form($message)
   <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Login Page</title>
+  <title>$message</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -45,7 +45,7 @@ function login_form($message)
   
       <div class="form-group text-center">
 	<form id="form" name="myform" action="login.php" method="POST" onsubmit="hashPassword();">
-	  <h1 style="color: #fffff0;"> Book Matching Portal </h1>
+	  <h1 style="color: #fffff0;"> -Book Matching Portal- <br> $message</h1>
 	  <br>
 	  <br>
 	    <label style="color: #fffff0;" for="username">Username: </label>
@@ -76,7 +76,7 @@ EOD;
 }
 
 if (!isset($_POST['username']) || !isset($_POST['password'])) {
-  login_form('Welcome');
+  login_form('Welcome, Please Login.');
 } else {
   // Check validity of the supplied username & password
   $c = oci_pconnect(ORA_CON_UN, ORA_CON_PW, ORA_CON_DB);
@@ -116,6 +116,8 @@ if (!isset($_POST['username']) || !isset($_POST['password'])) {
 
     while(oci_fetch($sql_statement)){
       if((oci_result($sql_statement, 1)) == "Student"){
+	    header('Location: studentportal.php');
+	    exit;
             echo <<<EOD
             <body style="font-family: Arial, sans-serif;">
             <h2>Login was successful. Welcome Student!</h2>
@@ -125,6 +127,8 @@ if (!isset($_POST['username']) || !isset($_POST['password'])) {
 EOD;
       }
       else{
+	    header('Location: teacherportal.php');
+	    exit;
             echo <<<EOD
             <body style="font-family: Arial, sans-serif;">
 
@@ -138,8 +142,7 @@ EOD;
   }
   else {
     // No rows matched so login failed
-    login_form('Login failed. Valid usernames/passwords ' .
-               'are "poop/pee" and "kebab/coconut"');
+    login_form('Username/Password incorrect. Please try again.');
   }
 }
 

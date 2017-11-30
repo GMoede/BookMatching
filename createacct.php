@@ -1,11 +1,5 @@
 <?php
 
-// createacct.php
-echo <<<EOD
-    <body style="font-family: Arial, sans-serif;">
-    <p><a href="login.php">Already have an account? Login.</a><p>
-    </body>
-EOD;
 
 include("config.php");
 
@@ -51,7 +45,7 @@ function createacct_form($message)
     <div class="col-md-6" id="login_bar">
       <form id="form" name="myform" action="createacct.php" method="POST" onsubmit="hashPassword();">
 	<div class="form-group text-center">
-	  <h1 style="color: #fffff0;"> Book Matching Portal </h1>
+	  <h1 style="color: #fffff0;"> -Book Matching Portal- <br> $message </h1>
 	  <br>
 	  <br>
 	    <label style="color: #fffff0;" for="username">Username: </label>
@@ -85,7 +79,7 @@ EOD;
 }
 
 if (!isset($_POST['username']) || !isset($_POST['password'])) {
-  createacct_form('Welcome');
+  createacct_form('Welcome. Please enter a username, password, and account type.');
 } else {  
   
   // Connect to oracle database
@@ -128,6 +122,8 @@ if (!isset($_POST['username']) || !isset($_POST['password'])) {
     // Set the user name to be used as the client identifier in
     // future HTTP requests:
     $_SESSION['username'] = $_POST['username'];
+    header('Location: login.php');
+    exit;
 
     echo <<<EOD
     <body style="font-family: Arial, sans-serif;">
