@@ -14,7 +14,7 @@ if ($_SESSION['username'] == NULL){
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-  <script src="teacherportal.js?v=1" type="text/javascript"></script>
+  <script src="teacherportal.js?version=1" type="text/javascript"></script>
   <link rel="stylesheet" type="text/css" href="teacherportal.css?v=1">
 
 </head>
@@ -27,7 +27,7 @@ if ($_SESSION['username'] == NULL){
 	      <a class="navbar-brand" href="#">Teacher Portal</a>
 	    </div>
 	    <ul class="nav navbar-nav navbar-right">
-	      <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Log out</a></li>
+	      <li><a href="login.php" onclick="logout()"><span class="glyphicon glyphicon-log-in"></span> Log out</a></li>
 	    </ul>
 	  </div>
 	</nav>

@@ -1,5 +1,19 @@
 var prev_search = [];
 
+function logout(){
+  url = "logout.php";
+  var posting = $.post(url);
+    posting.done(function( data ) {
+		  if(data){
+		    alert('success');
+		  }
+		  else{
+		    alert('failure');
+		  }
+	});
+    setTimeout(function(){}, 250);
+}
+
 function update(){
 	//first I will check to make sure the input is correct 
 
@@ -28,11 +42,11 @@ function update(){
 		alert("The following fields are incomplete/incorrect: " + errors);
 	} else {
 		//at this point we know it is valid data so we will save it so it can be used on the next search
-		  url = "application.php"
+		  url = "search.php"
 
 
   //send data using post with element id lexile
-		  var posting = $.post( url, { input_lexile: $('#input_lexile').val(), input_firstname: $('#input_firstname').val(), input_lastname: $('#input_lastname').val(), input_pages: $('#input_pages').val(), input_topic: $('#input_topic').val(), input_prot_feat: $('#input_prot_feat').val(), input_prot_gender: $('#input_prot_gender').val() } );
+		  var posting = $.post( url, { input_lexile: lexile, input_firstname: $('#input_firstname').val(), input_lastname: $('#input_lastname').val(), input_pages: $('#input_pages').val(), input_topic: $('#input_topic').val(), input_prot_feat: $('#input_prot_feat').val(), input_prot_gender: $('#input_prot_gender').val() } );
 
   //alerts the results
 		  posting.done(function( data ) {
@@ -59,13 +73,31 @@ function recommendBook(title){
     var posting = $.post( url, {input_title: title } );
     posting.done(function( data ) {
 		  if(data){
+		  	//location.reload();
 		    alert('success');
 		    console.log(data);
-		    location.reload();
+		    //location.reload();
 		  }
 		  else{
 		    alert('failure');
 		  }
 	});
+	/*
+	url = "search.php"
+	var posting = $.post( url, { input_lexile: $('#input_lexile').val(), input_firstname: $('#input_firstname').val(), input_lastname: $('#input_lastname').val(), input_pages: $('#input_pages').val(), input_topic: $('#input_topic').val(), input_prot_feat: $('#input_prot_feat').val(), input_prot_gender: $('#input_prot_gender').val() } );
+	posting.done(function(data){
+		if(data){
+			$('#search_results').html(data);
+			console.log(data);
+		}
+		else{
+			alert('failure');
+		}
+	});
+*/
+	setTimeout(function(){update(); }, 250);
+	
+
+
 }
 

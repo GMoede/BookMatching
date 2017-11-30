@@ -1,3 +1,17 @@
+function logout(){
+  url = "logout.php";
+  var posting = $.post(url);
+    posting.done(function( data ) {
+		  if(data){
+		    alert('success');
+		  }
+		  else{
+		    alert('failure');
+		  }
+	});
+    setTimeout(function(){}, 250);
+}
+
 function verifyInputs(){
 		var errors = [];
 		if (document.getElementById("input_title").value === ""){
@@ -31,7 +45,7 @@ function verifyInputs(){
 
 
   //send data using post with element id lexile
-		  var posting = $.post( url, { input_lexile: $('#input_lexile').val(), input_firstname: $('#input_firstname').val(), input_lastname: $('#input_lastname').val(), input_pages: $('#input_pages').val(), input_topic: $('#input_topic').val(), input_prot_feat: $('#input_prot_feat').val(), input_prot_gender: $('#input_prot_gender').val(), input_title: $('#input_title').val(), input_copyright: $('#input_copyright').val() } );
+		  var posting = $.post( url, { input_lexile: lexile, input_firstname: $('#input_firstname').val(), input_lastname: $('#input_lastname').val(), input_pages: $('#input_pages').val(), input_topic: $('#input_topic').val(), input_prot_feat: $('#input_prot_feat').val(), input_prot_gender: $('#input_prot_gender').val(), input_title: $('#input_title').val(), input_copyright: $('#input_copyright').val() } );
 
   //alerts the results
 		  posting.done(function( data ) {
@@ -54,7 +68,7 @@ function editButtons(){
 	}		
 }
 $(document).ready(function(){
-    url = "viewbooks.php"
+    url = "view.php"
 
 
   //send data using post with element id lexile
@@ -71,6 +85,9 @@ $(document).ready(function(){
 });
 function deleteBook(title){
   console.log(title);
+	var delete_var = confirm("Are you sure you want to delete this book?");
+	if(delete_var == true){
+
   url = "deletebook.php"
 
 		  
@@ -89,6 +106,9 @@ function deleteBook(title){
 		    alert('failure');
 		  }
 		  });
+	}else{
+		alert('book not deleted');
+	}
   
   
 }
@@ -154,7 +174,9 @@ function updateOrder(){
 
 	var input_order = document.getElementById("input_order").value;
   //send data using post with element id lexile
-	var posting = $.post(url , {orderby: input_order});
+	var posting = $.post(url , {orderby: $('#input_order').val()});
+	console.log(document.getElementById("input_order").value);
+
 	posting.done(function(data){
 		if(data) {
 			 $('#edit_container').html(data);

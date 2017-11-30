@@ -22,19 +22,56 @@ function sanitize_input($data)
 function login_form($message)
 {
   echo <<<EOD
-  <script src="js/md5.min.js"></script>
-  <script src="login.js"></script>
-  <body style="font-family: Arial, sans-serif;">
+  <!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Login Page</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="login.css?v=1">
+  <script src="login.js" type="text/javascript"></script>
+</head>
+<body>
 
-  <h2>Login Page</h2>
-  <p>$message</p>
-  <form id="form" name="myform" action="login.php" method="POST" onsubmit="hashPassword();">
-    <p>Username: <input type="text" name="username" id="username"></p>
+<div class="container-fluid" id="background">
+  <br>
+  <br>
+  <div class="row">
+    <div class="col-md-3"></div>
+    <div class="col-md-6" id="login_bar">
+  
+      <div class="form-group text-center">
+	<form id="form" name="myform" action="login.php" method="POST" onsubmit="hashPassword();">
+	  <h1 style="color: #fffff0;"> Book Matching Portal </h1>
+	  <br>
+	  <br>
+	    <label style="color: #fffff0;" for="username">Username: </label>
+	    <input type="text" class="form-control" id="username" name="username" placeholder="johnsmith1">
+	  <br>
+	    <label style="color: #fffff0;" for="password">Password: </label>
+	    <input type="password" class="form-control" name="password" id="password">
+	  <br>
+	  <input type="submit" value="Login">
+	  <br>
+	  <br>
+	  <a href="createacct.php"> Not a user? Create Account. </a>
+	</form>
+      </div>
+    </div>
+    <div class="col-md-3"></div>
+  </div>
 
-    <p>Password: <input type="password" name="password" id="password"</p>
-    <input type="submit" value="Login">
-  </form>
-  </body>
+
+</div>
+    
+</body>
+</html>
+
+<!--style="color: #fffff0;"-->
+
 EOD;
 }
 

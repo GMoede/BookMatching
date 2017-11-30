@@ -77,7 +77,8 @@ while (OCI_Fetch($sql_statement)){
 
 	//then we will insert them into the template for each row 
 
-	echo "<div class="row search_result">
+	echo <<<EOD
+	<div class="row search_result">
 		        <div class="title col-md-6">
 		        	<p class="book_title_field"> $title ($copyright) </p>
 		        	<p class="book_author_field"> by $firstname $lastname </p>
@@ -93,13 +94,14 @@ while (OCI_Fetch($sql_statement)){
 		        		<span class="book_detail_field"> $prot_feat </span>
 		        		<span class="book_detail_field"> $prot_gender </span>
 		        	</p>
-		        	<span style="font: bold 12px/14px Georgia, serif; color: #fffff0;"> Recommended: </span> <span class="book_detail_field left"> N
+		        	<span style="font: bold 12px/14px Georgia, serif; color: #fffff0;"> Recommended: </span> <span class="book_detail_field left"> $recommended
 		        		<button type='button' style="right=0px;" class='btn btn-default recommend_button' id='$title' data-toggle='modal' data-target='#editModal' onclick='recommendBook(this.id)'>
 								<span class='glyphicon glyphicon-thumbs-up' aria-hidden='true'></span>
 						</button>
 		        	</span> 
 		        </div>
-		    </div>"
+		    </div>
+EOD;
 
 }
 

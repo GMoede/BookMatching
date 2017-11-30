@@ -14,10 +14,10 @@ if ($_SESSION['username'] == NULL){
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js" integrity=""></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity=""></script>
-  <script src="studentportal.js" type="text/javascript"></script>
+  <script src="studentportal.js?version=1" type="text/javascript"></script>
   <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-JAW99MJVpJBGcbzEuXk4Az05s/XyDdBomFqNlM3ic+I=" crossorigin="anonymous"></script>
  
- <link rel="stylesheet" type="text/css" href="studentportal.css">
+ <link rel="stylesheet" type="text/css" href="studentportal.css?version=3">
 </head>
 <body>
 	<br>
@@ -28,13 +28,13 @@ if ($_SESSION['username'] == NULL){
 	      <a class="navbar-brand" href="#">Student Portal</a>
 	    </div>
 	    <ul class="nav navbar-nav navbar-right">
-	      <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Log out</a></li>
+	      <li><a href="login.php" onclick="logout()"><span class="glyphicon glyphicon-log-in"></span> Log out</a></li>
 	    </ul>
 	  </div>
 	</nav>
 
 	<div class="container" id="search_container">
-		<div class="modal-body row">
+		<div class="modal-body row poopyfart">
 	  		<div class="col-md-5 text-center" id="sidebar">
 	   		<!-- Your first column here -->
 		   		<form class="form-horizontal" role="form" id="studentForm" name="studentForm" method="POST">
